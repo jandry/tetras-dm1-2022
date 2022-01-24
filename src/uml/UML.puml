@@ -3,7 +3,7 @@
 class Labyrinthe {
      - pacman : Pacman
      - pacGommeList : List<IPacGomme>
-     + ajouterPacGomme()
+     + ajouterPacGomme() : IPacGomme
      + getPacman() : Pacman
      + getPacGommeList() : List<IPacGomme>
 }
@@ -19,6 +19,7 @@ interface IPacGomme {
 abstract AbstractPacGomme {
      - couleur: Couleur
      - taille: int
+     + AbstractPacGomme(int, Couleur)
 }
 
 class PacGommeNormale
@@ -39,6 +40,7 @@ PacGommeFactory ... N1
 class Pacman {
     {static} - instance: Pacman
     {static} + getInstance(): Pacman
+     - Pacman()
 }
 note "Singleton" as N2
 Pacman ... N2
