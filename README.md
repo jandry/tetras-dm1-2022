@@ -1,24 +1,23 @@
-Nous allons modéliser un serveur web (classe « ServeurWeb »).
-Ce serveur web permet de « repondre » à des objets « RequeteHttp ». Les « RequeteHttp » ont une méthode « afficher » permettant de la voir sous la forme d’une « String ».
-Les « RequeteHttp » sont faites de 3 sous-objets qui sont également « Affichable » :
--	« Url » avec un attribut « path » de type « String »
--	« Header » qui contient un attribut « headers » de clé/valeur (String/String)
--	« Body » qui contient un attribut « content » (String)
-     Le serveur a une méthode « repondre » prenant en entrée une « RequeteHttp » et renvoyant un entier. Cet entier est « 200 » si tout va bien, 500 si pas bon.
-     On souhaite interdire l’accès à certaines urls (« /evilurl ») en renvoyant 403 au lieu de 200. On ne touche pas au code du serveur web pour ajouter la fonctionnalité.
+Exercice Design Pattern session 1 / 3
 
-•	Quelles design patterns allez-vous utiliser ?
-•	Indiquez les design patterns utilisés à l’aide de commentaires dans le diagramme ci-dessous
-•	Proposer le diagramme UML (en utilisant par exemple PlantUML ou alors une image)
-•	Proposer une implémentation correspondant à votre diagramme et des tests associés
-o	Les tests devront vérifier que :
-	Retour 200 si pas /evilurl dans le path de « Url »
-	Retour 403 si /evilurl dans le path de « Url »
-	Retour 500 si on envoie une requête « null »
-	Appeler la méthode afficher sur un « RequeteHttp » qui affiche les sous-objets
+Nous allons modéliser un labyrinthe pour Pacman (classe « Labyrinthe »). 
+Ce labyrinthe ne pourra avoir qu’un et un seul « Pacman ». 
+Le labyrinthe contient des pac-gommes qui devront toutes respecter l’interface « IPacGomme » avec deux propriétés : couleur et taille.
+Il existe deux types de pac-gommes : les « PacGommeNormale» de taille 5 et de couleur jaune et les « PacGommeBoost » de taille 10 et de couleur bleue.
+Les pac-gommes seront mises dans le labyrinthe au travers d’une seule et unique classe. Toutes les 15 pac-gommes normales, c’est une pac-gomme boost qui est créée par cette classe.
 
-Votre projet doit m’être rendu sous forme de projet git qui compile que je pourrais cloner depuis internet (en utilisant github ou gitlab par exemple).
-Je prendrais les commits de vos projets à la date du 19/02/2021.
+- Quels design patterns allez-vous utiliser ?
+- Proposez le diagramme UML en utilisant PlantUML
+  - Si besoin, indiquez les design patterns à l’aide de commentaires
+- Proposez une implémentation en java
+- Créer les tests vérifiant que
+  - Que toutes les seize pac-gommes, il s’agit d’un boost
+  - Que l’on ne peut créer qu’un seul Pacman
+  - Qu’une pac-gomme normale est de taille 5 et de couleur jaune
+  - Qu’une pac-gomme boost est de taille 10 et de couleur bleue
 
-
-
+Votre projet doit m’être rendu :
+- sous forme de projet github
+- qui compile avec gradle
+- dont les tests passent
+Vous pouvez évidemment partir du projet du cours. Je prendrais votre projet avec les commits du lundi 24 janvier 2022 maximum.
