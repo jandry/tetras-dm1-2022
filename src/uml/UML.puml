@@ -1,0 +1,49 @@
+@startuml Pacman
+
+class Labyrinthe {
+     - pacman : Pacman
+     - pacGommeList : List<IPacGomme>
+     + ajouterPacGomme()
+     + getPacman() : Pacman
+     + getPacGommeList() : List<IPacGomme>
+}
+
+
+enum Couleur
+
+interface IPacGomme {
+     getCouleur(): Couleur
+     getTaille(): int
+}
+
+abstract AbstractPacGomme {
+     - couleur: Couleur
+     - taille: int
+}
+
+class PacGommeNormale
+class PacGommeBoost
+
+PacGommeNormale -u-|> AbstractPacGomme
+PacGommeBoost -u-|> AbstractPacGomme
+AbstractPacGomme .u.> IPacGomme
+
+class PacGommeFactory {
+     {static} + getPacGomme(): IPacgomme
+}
+
+note "Factory" as N1
+PacGommeFactory ... N1
+
+
+class Pacman {
+    {static} - instance: Pacman
+    {static} + getInstance(): Pacman
+}
+note "Singleton" as N2
+Pacman ... N2
+
+Labyrinthe ..> PacGommeFactory : uses
+Labyrinthe ..> Pacman : uses
+
+@enduml[]
