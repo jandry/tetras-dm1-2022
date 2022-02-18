@@ -27,7 +27,7 @@ class PacGommeBoost
 
 PacGommeNormale -u-|> AbstractPacGomme
 PacGommeBoost -u-|> AbstractPacGomme
-AbstractPacGomme .u.> IPacGomme
+AbstractPacGomme .u.|> IPacGomme
 
 class PacGommeFactory {
      {static} + getPacGomme(): IPacgomme
@@ -45,7 +45,8 @@ class Pacman {
 note "Singleton" as N2
 Pacman ... N2
 
-Labyrinthe ..> PacGommeFactory : uses
-Labyrinthe ..> Pacman : uses
+Labyrinthe ..> PacGommeFactory: uses
+Labyrinthe *-- IPacGomme
+Labyrinthe *-- Pacman
 
 @enduml[]
